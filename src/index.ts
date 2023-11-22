@@ -3,19 +3,19 @@ import './loadEnv.js'; //необходимо для корректной раб
 import express from 'express';
 import { sequelize } from './db.ts';
 import './global_functions/exportModels.ts';
-import cors from 'cors'
-import router from './controller/index.ts'
-import errorHandler from './middleware/ErrorHandlingMiddleware.ts'
-import fileUpload from 'express-fileupload'
+import cors from 'cors';
+import router from './controller/index.ts';
+import errorHandler from './middleware/ErrorHandlingMiddleware.ts';
+import fileUpload from 'express-fileupload';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import { options } from './swagger.ts';
-import swaggerJSDoc from 'swagger-jsdoc'
-import swaggerUi from 'swagger-ui-express'
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 const PORT = process.env.PORT;
-const swaggerSpec = swaggerJSDoc(options)
+const swaggerSpec = swaggerJSDoc(options);
 
 const app = express();
 app.use(cors());
@@ -29,14 +29,14 @@ app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(errorHandler);
 
 const start = async () => {
-    try{
-        await sequelize.authenticate();
-        await sequelize.sync();
+  try {
+    await sequelize.authenticate();
+    await sequelize.sync();
 
-        app.listen(PORT, () => console.log('Server has been started on PORT', PORT));
-    } catch(e) {
-        console.log(e)
-    }
-}
+    app.listen(PORT, () => console.log('Server has been started on PORT', PORT));
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-start()
+start();

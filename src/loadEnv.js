@@ -1,4 +1,4 @@
 console.log('3');
 import dotenv from 'dotenv';
-dotenv.config()
+dotenv.config();
 console.log('4');

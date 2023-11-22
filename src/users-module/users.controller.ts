@@ -1,6 +1,6 @@
-import {  Router } from "express";
-import usersService from "./users.service.ts";
-import { authMiddleware } from "../middleware/authMiddleware.ts";
+import { Router } from 'express';
+import usersService from './users.service.ts';
+import { authMiddleware } from '../middleware/authMiddleware.ts';
 
 const router = Router();
 
@@ -9,5 +9,4 @@ router.post('/login', usersService.login);
 
 router.get('/auth', authMiddleware, usersService.auth);
 
-
-export default router
+export default router;
